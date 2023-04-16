@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "title": "HTML / CSS(SCSS)",
+    "text": 12,
+    "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
+
+  },
+  {
+    "id": 2,
+    "title": "Vue / Nuxt",
+    "text": "Vue2.6系で書いていました。現在はVue3系をキャッチアップ中です",
+    "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
+  },
+  {
+    "id": 3,
+    "title": "JavaScript / TypeScript",
+    "text": "型指定を使用して処理を書いていました。",
+    "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
+  },
+  {
+    "id": 4,
+    "title": "Java / SpringBoot",
+    "text": "APIサーバーとしての構成を触ってきました。ドメイン駆動設計（DDD）に沿って開発を進めていました。",
+    "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
+  },
+  {
+    "id": 5,
+    "title": "Git / Git flow",
+    "text": "APIサーバー",
+    "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
+  },
+  {
+    "id": 6,
+    "title": "AWS",
+    "text": "S3, Codeシリーズ",
+    "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
+  },
+  {
+    "id": 7,
+    "title": "Python",
+    "text": "APIサーバー",
+    "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
+  }
+]
