@@ -11,7 +11,7 @@ export const portfolios = [
   {
     id: 2,
     title: "業務アプリケーション",
-    text: "バックエンドはAPIサーバーとしてSpringBoot, フロント側はNuxt3+TypeScriptの構成です。またAWSリソースを使用しています。",
+    text: "バックエンドはAPIサーバーとしてSpringBoot、フロント側はNuxt3+TypeScriptの構成です。またAWSリソースを使用しています。",
     imgSrc: "https://via.placeholder.com/500x300.png?text=Card+1",
     tags: [
       "SpringBoot", "Java", "Nuxt3"
@@ -20,7 +20,7 @@ export const portfolios = [
   {
     id: 3,
     title: "業務アプリケーション",
-    text: "",
+    text: "バックエンドはAPIサーバーとしてSpringBoot、フロント側はNuxt3+TypeScriptの構成です。",
     imgSrc: "https://via.placeholder.com/500x300.png?text=Card+1",
     tags: [
       "SpringBoot", "Java", "Nuxt3"

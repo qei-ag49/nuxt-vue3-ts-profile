@@ -28,7 +28,7 @@ useHead({
   <!-- <h1>求人一覧{{ text }}{{ name }}</h1> -->
   <p>aaaaaaaaaaaaaaa</p>
 
-  <img src="@/images/logo01.svg" />
+  <!-- <img src="@/images/logo01.svg" /> -->
   <JobsItem v-for="job in jobs" :key="job.id" :job="job" />
 </template>
 

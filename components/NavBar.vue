@@ -7,7 +7,7 @@
 
     <nav class="navbar navbar-expand-md navbar-light bg-white">
       <div class="container">
-        <nuxt-link to="/" class="navbar-brand">Portfolio</nuxt-link>
+        <nuxt-link to="/" class="navbar-brand">KM Profile</nuxt-link>
         <button
           class="navbar-toggler"
           type="button"

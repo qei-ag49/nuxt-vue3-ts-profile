@@ -4,5 +4,7 @@
     "nuxtjs",
     "vuetify",
     "Vuex",
+    "MyBatis",
+    "composables"
   ]
 }

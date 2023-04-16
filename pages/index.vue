@@ -4,6 +4,12 @@
       <h2>About Me</h2>
     </div>
 
+    <!-- <TestCompositionTest /> -->
+    <TestScriptSetupTest 
+      title="ここにタイトルが入ります"
+      @custom-event="parentMethod"  
+    />
+
     <div class="container mt-4">
       <h3>挨拶</h3>
       <div class="">
@@ -21,13 +27,6 @@
     </div>
 
     <div class="container">
-      <h3>自己紹介</h3>
-      <div class="">
-        <p>自社Saas開発企業の開発・運用エンジニアとして従事しています。</p>
-      </div>
-    </div>
-
-    <div class="container">
       <h3>興味・関心ごと</h3>
       <div class="">
         <p>ChatGpt</p>
@@ -38,4 +37,12 @@
 
 <script>
 
+export default {
+
+  methods: {
+    parentMethod(e) {
+      console.log("Emit実行されました", e)
+    },
+  },
+}
 </script>

@@ -1,48 +1,48 @@
 <template>
   <div>
     <div class="container">
-      <h2>skills</h2>
+      <h2>skill</h2>
     </div>
 
     <div class="container mt-4">
       <h3>経験業務</h3>
     </div>
 
-    <div class="container">
-      <p>
-        <span class="font-bold">概要：</span><br>
-        業務アプリケーションのマイクロサービスの開発・運用の対応をしていました。
-      </p>
-      <p>
-        <span class="font-bold">チーム体制：</span><br>
+    <div class="container mt-4">
+      <div class="heading-sub">概要：</div>
+      <div class="pl-4 text-indent">業務アプリケーションのマイクロサービスの開発・運用の対応をしていました。</div>
+
+      <div class="heading-sub mt-4">チーム体制：</div>
+      <div class="pl-4 text-indent">
         チーム体制はエンジニア約4人で、Backlogを使用したチケット駆動開発で、スクラム体制で進めていました。
         メンバー全員でローテーションで原則週1回のリリース、コードレビューを行っていました。
-      </p>
+      </div>
 
-      <p>
-        <span class="font-bold">仕様決めから実装の流れ：</span><br>
+      <div class="heading-sub mt-4">仕様決めから実装の流れ：</div>
+      <div class="pl-4 text-indent">
         社内の営業・CS（カスタマーサクセス）メンバーから、お客様の要望を確認し、要件や優先順位、仕様などを確認、その後実装に入る流れです。
-      </p>
+      </div>
 
-      <p>
-        <span class="font-bold">レビュー・リリース体制：</span><br>
-        原則週1回のリリースをしていました。<br>
-        AWS Codeシリーズを利用したCI / CDを利用していました。<br>
+      <div class="heading-sub mt-4">レビュー・リリース体制：</div>
+      <div class="pl-4 text-indent">
+        原則週1回のリリースをしていました。
+        AWS Codeシリーズを利用したCI / CDを利用していました。
         全員のレビューが通過したらチケットのブランチ内容をdevelopブランチにマージ、ステージングブランチにマージ、本番用のブランチにマージという流れでした。
-      </p>
+      </div>
 
-      <p>
-        <span class="font-bold">自身の対応範囲：</span><br>
-        一般開発メンバーとして、チケットの内容に添い、フロント・バックエンドの修正をメインで行いました。
-        ローテーションで、週1回のリリースやコードレビューもしていました。
-      </p>
+      <div class="heading-sub mt-4">自身の対応範囲：</div>
+      <div class="pl-4 text-indent">
+        一般開発メンバーとして、チケットの内容に添い、フロント・バックエンドの修正をメインで行いました。<br>ローテーションで、週1回のリリースやコードレビューもしていました。
+      </div>
     </div>
+
+    <hr />
 
     <div class="container mt-4">
       <h3>経験技術</h3>
     </div>
 
-    <div class="container">
+    <div class="container mt-4">
       <ul class="d-flex card-list">
         <li v-for="(card, index) in cardList" :key="index" class="card card__col3">
           <div class="card-img">
@@ -52,12 +52,14 @@
             <h3> {{ card.title }} </h3>
             <p>経験年数：{{ card.periodOfExperience }}</p>
             <p>{{ card.text }}</p>
-            <button 
+            <div class="buttonWrapper">
+              <button 
               class="btn commonButton" 
               @click="openModal(card.id)"
             >
               詳細を見る
             </button>
+            </div>
           </div>
 
           <teleport to="body">
@@ -67,7 +69,10 @@
               <div class="modal-content">
                 <h3>{{ selectedCard.title }}</h3>
                 <p>{{ selectedCard.text }}</p>
-                <button class="commonButton"  @click="closeModal">閉じる</button>
+                <p>{{ selectedCard.detailText }}</p>
+                <div class="buttonWrapper">
+                  <button class="commonButton"  @click="closeModal">閉じる</button>
+                </div>
               </div>
             </div>
 
@@ -76,70 +81,48 @@
       </ul>
     </div>
 
-    <Modal 
-      v-if="showModal1"
-      @close="closeModal"
-    />
+    <hr />
 
-    
+    <div class="container mt-4">
+      <h3>所有資格</h3>
+    </div>
+
+    <div class="container mt-4 mb-4">
+      <div class="heading-sub">Java Silver</div>
+      <div class="pl-4 text-indent">2022年1月取得</div>
+      <div class="pl-4 text-indent">
+        Javaが未経験の中の業務だったため、キャッチアップのために学習し取得しました。
+      </div>
+      <div class="heading-sub mt-4">AWS SAA</div>
+      <div class="pl-4 text-indent">2022年10月取得</div>
+      <div class="pl-4 text-indent">
+        AWSの認定資格の中で、スタンダードな資格ということもあり、学習し取得しました。
+      </div>
+    </div>
 
   </div>
 </template>
 
-<script>
-import {skills} from "~/constants/skills"
+<script lang="ts">
+import { skills } from "~/constants/skills"
 
 export default {
   data() {
     return {
-      // eventName: "default",
       showModal: false,
-      // cardList: [
-      //   {
-      //     id: 1,
-      //     imgSrc: "https://via.placeholder.com/500x400.png?text=Card+1",
-      //     title: "HTML / CSS",
-      //     text: "経験",
-      //   },
-      //   {
-      //     id: 2,
-      //     imgSrc: "https://via.placeholder.com/500x400.png?text=Card+1",
-      //     title: "Vue / Nuxt",
-      //     text: "経験",
-      //   },
-      //   {
-      //     id: 3,
-      //     imgSrc: "https://via.placeholder.com/500x400.png?text=Card+1",
-      //     title: "JavaScript",
-      //     text: "経験",
-      //   },
-      //   {
-      //     id: 4,
-      //     imgSrc: "https://via.placeholder.com/500x400.png?text=Card+1",
-      //     title: "TypeScript",
-      //     text: "経験",
-      //   },
-      // ],
       cardList: skills,
       cardId: 0,
-      selectedCard: {},
+      selectedCard: {
+        title: "",
+        text: "",
+        detailText: "",
+      },
     }
   },
   computed: {
   },
   methods: {
-    // openModal(eventName) {
-    //   this.eventName = eventName
-
-    //   if (eventName === "delete") {
-    //     this.$refs.child.deleteConfirmDialog()
-
-    //   } else if (eventName === "showDetail") {
-    //     // もしexecuteConfirmDialogの引数に渡されたイベント名が"showDetail"だったら〜の処理の場合です
-    //   }
-    // },
-
-    openModal(id) {
+    openModal(id: number) {
       this.showModal = true
       this.cardId = id
       this.selectCard(id)
@@ -148,10 +131,14 @@ export default {
     closeModal() {
       this.showModal = false
       this.cardId = 0
-      this.selectedCard = {}
+      this.selectedCard = {
+        title: "",
+        text: "",
+        detailText: "",
+      }
     },
 
-    selectCard(cardId) {
+    selectCard(cardId: number) {
       for (const card of this.cardList) {
         if (cardId === card.id) {
           this.selectedCard = card
@@ -165,5 +152,19 @@ export default {
 </script>
 
 <style lang="scss">
+.heading-sub {
+  border-left: 3px solid #1abc9c;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.pl-4 {
+  padding-left: 13px;
+}
+
+.text-indent {
+  text-indent: 0px;
+}
 
 </style>
