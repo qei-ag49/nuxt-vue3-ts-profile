@@ -15,21 +15,22 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {
   ref, reactive, toRefs,
   computed, watch, watchEffect,
   onMounted
 } from "vue"
+import { Book } from "~/types/common"
 
 export default {
   setup() {
     let name = "大谷"
     const age = 30
-    const nameRef = ref("錦織")
+    const nameRef = ref<string>("錦織")
     console.log(nameRef)
 
-    const book = reactive({
+    const book = reactive<Book>({
       title: "タイトル",
       author: ["大谷", "伊藤"]
     })
@@ -44,11 +45,11 @@ export default {
       number: 1,
     })
 
-    const totalPrice = computed(() => {
+    const totalPrice = computed<number>(() => {
       return item.price * item.number
     })
 
-    const count = ref(100)
+    const count = ref<number>(100)
     const plusOne = computed({
       get: () => count.value + 1,
       set: val => {
@@ -58,7 +59,7 @@ export default {
     plusOne.value = 1
     console.log(count.value) // 0
 
-    const btnClick = (e) => {
+    const btnClick = (e: Event) => {
       console.log(book.title) // thisは不要
       console.log(e)
     }
@@ -70,7 +71,7 @@ export default {
       console.log(`prev: ${prevValue}`)
     })
 
-    const searchEffect = ref("")
+    const searchEffect = ref<string>("")
     watchEffect(() => {
       console.log(`searchEffect: ${searchEffect.value}`)
     })

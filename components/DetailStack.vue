@@ -27,7 +27,7 @@
         </button>
       </div>
 
-      <div v-if="isFormEdit">
+      <!-- <div v-if="isFormEdit">
         <p> {{ item.id }} </p>
         <p> {{ item }} </p>
       </div>
@@ -47,8 +47,7 @@
             <img :src="`${item.imgSrc}`" alt="">
           </div>
         </div>
-
-      </form>
+      </form> -->
 
       <div v-if="isFormEdit" class="buttonWrapper mt-4">
         <button 
@@ -91,128 +90,277 @@
   </div>
 </template>
 
-<script>
-// import { Item } from "~~/types/common"
+<script lang="ts" setup>
+import {
+  defineProps, ref, reactive, computed, watch, watchEffect, defineEmits
+} from 'vue'
+import { Item } from '~/types/common'
+import NormalDialog from './NormalDialog.vue';
 
-export default {
-  props: {
-    isFormEdit: Boolean,
-    item: Object,
-    latestIncrementedId: Number,
-  },
-  data() {
-    return {
-      dataOptionData: "",
-      shouldDialog: false,
-      eventName: "default",
-      eventType: "",
-    }
-  },
-  computed: {
-    getShouldDialog() {
-      return this.shouldDialog
-    },
+const props = defineProps({
+  isFormEdit: Boolean,
+  item: Object,
+  latestIncrementedId: Number,
+})
 
-    isStackEdit() {
-      return this.isFormEdit
-    },
+const emit = defineEmits([
+  "parent-event",
+  "parent-event2",
+  "parent-event3",
+  "parent-event4",
+])
 
-    getInputObj() {
-      if (!this.item || !this.latestIncrementedId) return
-      return {
-        id: this.latestIncrementedId,
-        name: this.item.name,
-        age: this.item.age,
-      }
-    }
+let dataOptionData = ref<string>("")
+let shouldDialog = ref<boolean>(false)
+// const eventName = ref<string>("default")
+const eventType = ref<string>("")
 
-  },
-  // mounted() {
-  // },
-  watch: {
-    itemId: function(newVal, oldVal) {
-      // データの値が変化した時にコンソールに新しい値と古い値を出力
-      this.dataOptionData = newVal
-    },
-  },
-  methods: {
-    executeIsFormEditFalse() {
-      this.$emit("parent-event", false)
-    },
+const getShouldDialog = computed(() => {
+  return shouldDialog
+})
 
-    confirmDialog() {
-      this.shouldDialog = true
-    },
+const isStackEdit = computed<boolean>(() => {
+  return props.isFormEdit
+})
 
-    closeDialog() {
-      this.shouldDialog = false
-    },
+const getInputObj = computed<Item | null>(() => {
+  if (!props.item || !props.latestIncrementedId) return null
 
-    closeStack() {
-      this.$emit("parent-event2", false)
-    },
-
-    executeConfirmDialog(eventType) {
-      // deleteなどの文字列をセットする処理を入れる
-      this.eventType = eventType
-
-      if (eventType === 'register') {
-        console.log("register")
-
-        if (!this.latestIncrementedId) return
-
-        // const inputObj: Item = {
-        //   id: this.latestIncrementedId,
-        //   name: this.item.name,
-        //   age: this.item.age,
-        // }
-
-        // 後で任意のものを削除できるように、incrementされるidの値も仕込みたい
-        const setInputJson = JSON.stringify(this.getInputObj)
-        localStorage.setItem(`key-${this.latestIncrementedId}`, setInputJson)
-
-        // Rootコンポーネントで定義している配列に、LSに保存する際のIDを追加するメソッドを発火
-        this.$emit("parent-event3", this.latestIncrementedId)
-
-        this.executePushLsKey()
-
-      } else {
-        // alert("必須項目を登録してください！")
-
-        // this.confirmDialog()
-        this.$refs.confirmDialog.confirmDialog(true)
-      }
-
-      let StoredItem = localStorage.getItem(`key-${this.latestIncrementedId}`)
-      if (StoredItem !== null) {
-        // JSON.parse(StoredItem).name
-        // alert(`ID：${JSON.parse(StoredItem).id}\n名前：${JSON.parse(StoredItem).name}\n年齢：${JSON.parse(StoredItem).age}`)
-      }
-
-      Object.keys(localStorage).forEach((key) => {
-        console.log(key)
-        alert(key)
-      })
-
-      // メッセージ表示後、ダイアログを閉じる
-      this.closeDialog()
-      // スタック・フォームを閉じる処理
-      this.closeStack()
-      // LSの内容を反映させる
-      this.generateItemFromLs()
-    },
-
-    // ローカルストレージに存在するキーを配列に追加する。
-    executePushLsKey() {
-      const latestIncrementedId = this.$refs.normalDialog.latestIncrementedId
-      this.$emit("parent-event3", latestIncrementedId)
-    },
-
-    generateItemFromLs() {
-      this.$emit("parent-event4")
-    },
+  return {
+    id: props.latestIncrementedId,
+    name: props.item.name,
+    age: props.item.age,
   }
+})
+
+// const normalDialogRef = ref(null)
+// const normalDialogRef = ref<HTMLInputElement | null>(null)
+
+// const confirmDialogRef = ref(null)
+const confirmDialogRef = ref<HTMLInputElement | null>(null)
+
+let latestIncrementedId = ref<string>("")
+
+onMounted(() => {
+  // latestIncrementedId = normalDialogRef.value.latestIncrementedId
+  // latestIncrementedId = normalDialogRef.value
+})
+
+//
+// watch
+//
+// itemId: function(newVal, oldVal) {
+//   // データの値が変化した時にコンソールに新しい値と古い値を出力
+//   dataOptionData = newVal
+// }
+const search = ref(null)
+watch(search, (newValue, prevValue) => {
+  console.log(`watch: ${search.value}`)
+  console.log(`new: ${newValue}`)
+  console.log(`prev: ${prevValue}`)
+})
+
+// const searchEffect = ref("")
+// watchEffect(() => {
+//   console.log(`searchEffect: ${searchEffect.value}`)
+// })
+
+// const executeIsFormEditFalse = () => {
+//   emit("parent-event", false)
+// }
+
+// const confirmDialog = () => {
+//   shouldDialog.value = true
+// }
+
+const closeDialog = () => {
+  shouldDialog.value = false
 }
+
+const closeStack = () => {
+  emit("parent-event2", false)
+}
+
+const normalDialogRef = ref(null);
+// function openDialog() {
+//   if (normalDialogRef.value === null) return
+//   normalDialogRef.value.latestIncrementedId; // 子コンポーネントのopenメソッドを呼び出す
+// }
+
+const executeConfirmDialog = (eventType: any) => {
+  // deleteなどの文字列をセットする処理を入れる
+  eventType = eventType
+
+  if (eventType === 'register') {
+    console.log("register")
+
+    if (!props.latestIncrementedId) return
+
+    // 後で任意のものを削除できるように、incrementされるidの値も仕込みたい
+    const setInputJson = JSON.stringify(getInputObj)
+    localStorage.setItem(`key-${props.latestIncrementedId}`, setInputJson)
+
+    // Rootコンポーネントで定義している配列に、LSに保存する際のIDを追加するメソッドを発火
+    emit("parent-event3", props.latestIncrementedId)
+
+    executePushLsKey()
+
+  } else {
+    // this.confirmDialog()
+    // $refs.confirmDialog.confirmDialog(true)
+    // confirmDialogRef.value.confirmDialog(true)
+    // confirmDialogRef.value.confirmDialog(true)
+    // defineExpose({ confirmDialog })を使うのか？
+  }
+
+  let StoredItem = localStorage.getItem(`key-${props.latestIncrementedId}`)
+  if (StoredItem !== null) {
+    // JSON.parse(StoredItem).name
+    // alert(`ID：${JSON.parse(StoredItem).id}\n名前：${JSON.parse(StoredItem).name}\n年齢：${JSON.parse(StoredItem).age}`)
+  }
+
+  Object.keys(localStorage).forEach((key) => {
+    console.log(key)
+    alert(key)
+  })
+
+  // メッセージ表示後、ダイアログを閉じる
+  closeDialog()
+  // スタック・フォームを閉じる処理
+  closeStack()
+  // LSの内容を反映させる
+  generateItemFromLs()
+}
+
+// ローカルストレージに存在するキーを配列に追加する。
+const executePushLsKey = () => {
+  // const latestIncrementedId = $refs.normalDialog.latestIncrementedId
+  // const latestIncrementedId = normalDialogRef.value.latestIncrementedId
+  emit("parent-event3", latestIncrementedId)
+}
+
+const generateItemFromLs = () => {
+  emit("parent-event4")
+}
+
+// export default {
+//   props: {
+//     isFormEdit: Boolean,
+//     item: Object,
+//     latestIncrementedId: Number,
+//   },
+//   data() {
+//     return {
+//       dataOptionData: "",
+//       shouldDialog: false,
+//       eventName: "default",
+//       eventType: "",
+//     }
+//   },
+//   computed: {
+//     getShouldDialog() {
+//       return this.shouldDialog
+//     },
+
+//     isStackEdit() {
+//       return this.isFormEdit
+//     },
+
+//     getInputObj() {
+//       if (!this.item || !this.latestIncrementedId) return
+//       return {
+//         id: this.latestIncrementedId,
+//         name: this.item.name,
+//         age: this.item.age,
+//       }
+//     }
+
+//   },
+
+//   watch: {
+//     itemId: function(newVal, oldVal) {
+//       // データの値が変化した時にコンソールに新しい値と古い値を出力
+//       this.dataOptionData = newVal
+//     },
+//   },
+//   methods: {
+//     executeIsFormEditFalse() {
+//       this.$emit("parent-event", false)
+//     },
+
+//     confirmDialog() {
+//       this.shouldDialog = true
+//     },
+
+//     closeDialog() {
+//       this.shouldDialog = false
+//     },
+
+//     closeStack() {
+//       this.$emit("parent-event2", false)
+//     },
+
+//     executeConfirmDialog(eventType) {
+//       // deleteなどの文字列をセットする処理を入れる
+//       this.eventType = eventType
+
+//       if (eventType === 'register') {
+//         console.log("register")
+
+//         if (!this.latestIncrementedId) return
+
+//         // const inputObj: Item = {
+//         //   id: this.latestIncrementedId,
+//         //   name: this.item.name,
+//         //   age: this.item.age,
+//         // }
+
+//         // 後で任意のものを削除できるように、incrementされるidの値も仕込みたい
+//         const setInputJson = JSON.stringify(this.getInputObj)
+//         localStorage.setItem(`key-${this.latestIncrementedId}`, setInputJson)
+
+//         // Rootコンポーネントで定義している配列に、LSに保存する際のIDを追加するメソッドを発火
+//         this.$emit("parent-event3", this.latestIncrementedId)
+
+//         this.executePushLsKey()
+
+//       } else {
+//         // alert("必須項目を登録してください！")
+
+//         // this.confirmDialog()
+//         this.$refs.confirmDialog.confirmDialog(true)
+//       }
+
+//       let StoredItem = localStorage.getItem(`key-${this.latestIncrementedId}`)
+//       if (StoredItem !== null) {
+//         // JSON.parse(StoredItem).name
+//         // alert(`ID：${JSON.parse(StoredItem).id}\n名前：${JSON.parse(StoredItem).name}\n年齢：${JSON.parse(StoredItem).age}`)
+//       }
+
+//       Object.keys(localStorage).forEach((key) => {
+//         console.log(key)
+//         alert(key)
+//       })
+
+//       // メッセージ表示後、ダイアログを閉じる
+//       this.closeDialog()
+//       // スタック・フォームを閉じる処理
+//       this.closeStack()
+//       // LSの内容を反映させる
+//       this.generateItemFromLs()
+//     },
+
+//     // ローカルストレージに存在するキーを配列に追加する。
+//     executePushLsKey() {
+//       const latestIncrementedId = this.$refs.normalDialog.latestIncrementedId
+//       this.$emit("parent-event3", latestIncrementedId)
+//     },
+
+//     generateItemFromLs() {
+//       this.$emit("parent-event4")
+//     },
+//   }
+// }
 </script>
 
 <style lang="scss">

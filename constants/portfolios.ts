@@ -1,4 +1,6 @@
-export const portfolios = [
+import { Portfolio } from "~/types/common";
+
+export const portfolios: Array<Portfolio> = [
   {
     id: 1,
     title: "Profile",

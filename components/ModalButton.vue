@@ -15,14 +15,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      modalOpen: false,
-    }
-  },
-}
+<script setup>
+import { ref } from "vue"
+const modalOpen = ref(false)
+
 </script>
 
 <style lang="scss" scoped>

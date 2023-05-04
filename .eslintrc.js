@@ -27,5 +27,7 @@ module.exports = {
   ],
   plugins: [],
   // add your custom rules here
-  rules: {}
+  rules: {
+    "prettier/prettier": ["error", { tabWidth: 2 }]
+  }
 }

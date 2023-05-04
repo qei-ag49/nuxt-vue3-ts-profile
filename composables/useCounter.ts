@@ -9,7 +9,7 @@ export default function useCounter(item: Merchandise): UseCounter {
     item.amount--
   }
 
-  const totalPrice = computed(() => {
+  const totalPrice = computed<number>(() => {
     return item.price * item.amount
   })
 

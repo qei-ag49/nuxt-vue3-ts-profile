@@ -3,49 +3,69 @@
     <h2>aaa</h2>
     <TestPropsEmitParentTest 
       :setupBooks="setupBooks" 
-      :dataBooks="dataBooks"
       @custom-event="parentMethod"
     />
+      <!-- :dataBooks="dataBooks" -->
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { reactive } from "vue"
+import { Book } from "~/types/common"
 
-export default {
-  setup() {
-    const setupBooks = reactive([
-      {
-        title: "setupタイトル1",
-        author: "setup著者1",
-      },
-      {
-        title: "setupタイトル2",
-        author: "setup著者2",
-      },
-    ])
+const dataBooks: Book = reactive<Book>({
+  title: "dataタイトル",
+  author: "data著者",
+})
 
-    return {
-      setupBooks,
-    }
+const setupBooks: Array<Book> = reactive([
+  {
+    title: "setupタイトル1",
+    author: "setup著者1",
   },
-
-  data() {
-    return {
-      dataBooks: [
-        {
-          title: "dataタイトル",
-          author: "data著者",
-        },
-      ],
-    }
+  {
+    title: "setupタイトル2",
+    author: "setup著者2",
   },
+])
 
-  methods: {
-    parentMethod(e) {
-      console.log(e)
-    }
-  },
-
+const parentMethod = (e: Event) => {
+  console.log(e)
 }
+
+// export default {
+//   setup() {
+//     const setupBooks = reactive([
+//       {
+//         title: "setupタイトル1",
+//         author: "setup著者1",
+//       },
+//       {
+//         title: "setupタイトル2",
+//         author: "setup著者2",
+//       },
+//     ])
+
+//     return {
+//       setupBooks,
+//     }
+//   },
+
+//   data() {
+//     return {
+//       dataBooks: [
+//         {
+//           title: "dataタイトル",
+//           author: "data著者",
+//         },
+//       ],
+//     }
+//   },
+
+//   methods: {
+//     parentMethod(e: Event) {
+//       console.log(e)
+//     }
+//   },
+// }
 </script>

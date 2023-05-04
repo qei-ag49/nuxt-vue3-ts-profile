@@ -55,51 +55,49 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { portfolios } from "~/constants/portfolios"
+import { ref, reactive } from "vue"
 
-export default {
-  data() {
-    return {
-      // eventName: "default",
-      showModal: false,
-      cardList: portfolios,
-      cardId: 0,
-      selectedCard: {
-        title: "",
-        text: "",
-      },
-    }
-  },
-  computed: {
-  },
-  methods: {
-    openModal(id: number) {
-      this.showModal = true
-      this.cardId = id
-      this.selectCard(id)
-    },
+//
+// data
+//
+const showModal = ref<boolean>(false)
+const cardList = reactive(portfolios)
+const cardId = ref<number>(0)
+const selectedCard = reactive({
+  title: "",
+  text: "",
+})
 
-    closeModal() {
-      this.showModal = false
-      this.cardId = 0
-      this.selectedCard = {
-        title: "",
-        text: "",
-      }
-    },
-
-    selectCard(cardId: number) {
-      for (const card of this.cardList) {
-        if (cardId === card.id) {
-          this.selectedCard = card
-          break
-        }
-      }
-    },
-
-  },
+//
+// methods
+//
+const openModal = (id: number) => {
+  showModal.value = true
+  cardId.value = id
+  selectCard(id)
 }
+
+const closeModal = () => {
+  showModal.value = false
+  cardId.value = 0
+  selectedCard.title = ""
+  selectedCard.text = ""
+}
+
+const selectCard = (id: number) => {
+  for (const card of cardList) {
+    // if (cardId.value === card.id) {
+    if (id === card.id) {
+      // NOTE 引数のidを参照していないからNGかも
+      Object.assign(selectedCard, card)
+
+      break
+    }
+  }
+}
+
 </script>
 
 <style lang="scss">
