@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { ref, defineProps } from "vue"
 
 /** Propsダウン */
@@ -8,7 +8,7 @@ const props = defineProps({
 
 const emitTest = defineEmits(["custom-event"])
 
-const count = ref(0)
+const count = ref<number>(0)
 
 const increment = () => {
   count.value++

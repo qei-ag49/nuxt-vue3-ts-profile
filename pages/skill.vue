@@ -103,52 +103,86 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { skills } from "~/constants/skills"
 
-export default {
-  data() {
-    return {
-      showModal: false,
-      cardList: skills,
-      cardId: 0,
-      selectedCard: {
-        title: "",
-        text: "",
-        detailText: "",
-      },
-    }
-  },
-  computed: {
-  },
-  methods: {
-    openModal(id: number) {
-      this.showModal = true
-      this.cardId = id
-      this.selectCard(id)
-    },
+import { ref, reactive } from "vue"
 
-    closeModal() {
-      this.showModal = false
-      this.cardId = 0
-      this.selectedCard = {
-        title: "",
-        text: "",
-        detailText: "",
-      }
-    },
+const showModal = ref(false)
+const cardList = reactive(skills)
+const cardId = ref(0)
+const selectedCard = reactive({
+  title: "",
+  text: "",
+  detailText: "",
+})
 
-    selectCard(cardId: number) {
-      for (const card of this.cardList) {
-        if (cardId === card.id) {
-          this.selectedCard = card
-          break
-        }
-      }
-    },
-
-  },
+const openModal = (id: number) => {
+  showModal.value = true
+  cardId.value = id
+  selectCard(id)
 }
+
+const closeModal = () => {
+  showModal.value = false
+  cardId.value = 0
+  selectedCard.title = ""
+  selectedCard.text = ""
+  selectedCard.detailText = ""
+}
+
+const selectCard = (cardId: number) => {
+  for (const card of cardList) {
+    if (cardId === card.id) {
+      Object.assign(selectedCard, card)
+      break
+    }
+  }
+}
+
+// export default {
+//   data() {
+//     return {
+//       showModal: false,
+//       cardList: skills,
+//       cardId: 0,
+//       selectedCard: {
+//         title: "",
+//         text: "",
+//         detailText: "",
+//       },
+//     }
+//   },
+
+//   methods: {
+//     openModal(id: number) {
+//       this.showModal = true
+//       this.cardId = id
+//       this.selectCard(id)
+//     },
+
+//     closeModal() {
+//       this.showModal = false
+//       this.cardId = 0
+//       this.selectedCard = {
+//         title: "",
+//         text: "",
+//         detailText: "",
+//       }
+//     },
+
+//     selectCard(cardId: number) {
+//       for (const card of this.cardList) {
+//         if (cardId === card.id) {
+//           this.selectedCard = card
+//           break
+//         }
+//       }
+//     },
+
+//   },
+// }
+
 </script>
 
 <style lang="scss">

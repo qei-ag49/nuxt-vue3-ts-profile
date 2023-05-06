@@ -35,14 +35,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 
-export default {
-
-  methods: {
-    parentMethod(e) {
-      console.log("Emit実行されました", e)
-    },
-  },
+const parentMethod = (e: any) => {
+  console.log("Emit実行されました", e)
 }
+
 </script>

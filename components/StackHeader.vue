@@ -13,30 +13,26 @@
   </button>
 </template>
 
-<script>
-export default {
-  props: {
-    title: String,
-    saveBtnLabel: String,
-    isSaveBtnShown: Boolean,
-    disabled: Boolean,
-  },
-  data() {
-    return {
-      
-    }
-  },
-  computed: {
+<script lang="ts" setup>
+import { defineProps } from "vue"
 
-  },
-  methods: {
-    closeButton() {
-      // this.removeStack()
-    },
-    removeStack() {
+const props = defineProps({
+  title: String,
+  saveBtnLabel: String,
+  isSaveBtnShown: Boolean,
+  disabled: Boolean,
+})
 
-    }
-  },
+const closeButton = () => {
+  removeStack()
+}
+
+const removeStack = () => {
+  
+}
+
+const isSaveButtonShown = () => {
+
 }
 </script>
 

@@ -12,11 +12,22 @@
   </div>
 </template>
 
-<script lang="ts">
-// import { reactive, computed } from "vue"
+<script lang="ts" setup>
 import { reactive } from "vue"
 import { Merchandise } from "~/types/common"
 import useCounter from "~/composables/useCounter"
+
+const item: Merchandise = reactive({
+  name: "商品名",
+  price: 100,
+  amount: 0,
+})
+
+const {
+  increment,
+  decrement,
+  totalPrice
+} = useCounter(item)
 
 // script内で合成関数を作成する場合
 // const useCounter = (item: Merchandise) => {
@@ -32,28 +43,27 @@ import useCounter from "~/composables/useCounter"
 //   return { increment, decrement, totalPrice }
 // }
 
-export default {
-  setup() {
-    const item: Merchandise = reactive({
-      name: "商品名",
-      price: 100,
-      amount: 0,
-    })
+// export default {
+//   setup() {
+//     const item: Merchandise = reactive({
+//       name: "商品名",
+//       price: 100,
+//       amount: 0,
+//     })
 
-    const {
-      increment,
-      decrement,
-      totalPrice
-    } = useCounter(item)
+//     const {
+//       increment,
+//       decrement,
+//       totalPrice
+//     } = useCounter(item)
 
-    return {
-      item,
-      increment,
-      decrement,
-      totalPrice,
-    }
+//     return {
+//       item,
+//       increment,
+//       decrement,
+//       totalPrice,
+//     }
     
-  },
-
-}
+//   },
+// }
 </script>
