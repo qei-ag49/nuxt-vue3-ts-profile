@@ -10,7 +10,9 @@ export type Item = {
 export type SkillCard = {
   id: number
   title: string
+  periodOfExperience: string
   text: string
+  detailText: string
   imgSrc: string
 }
 
@@ -21,6 +23,8 @@ export type Portfolio = {
   text: string
   imgSrc: string
   tags: Array<string>
+  deployedTo?: string
+  githubSrc?: string
 }
 
 /** Book */

@@ -1,4 +1,6 @@
-export const skills = [
+import { SkillCard } from "~/types/common";
+
+export const skills: SkillCard[] = [
   {
     id: 1,
     title: "HTML / CSS(SCSS)",
@@ -27,32 +29,25 @@ export const skills = [
     id: 4,
     title: "Java / SpringBoot",
     periodOfExperience: "1.5年",
-    text: "APIサーバーとしての構成を触ってきました。ドメイン駆動設計（DDD）に沿って開発を進めていました。",
-    detailText: "MyBatis, Jpa, PostgreSQL",
+    text: "APIサーバーとしての構成を触ってきました。\nドメイン駆動設計（DDD）に沿って開発を進めていました。",
+    detailText: "MyBatis, Jpa, Flyway, Lombok, PostgreSQL",
     imgSrc: "https://via.placeholder.com/500x400.png?text=Card+1"
   },
   {
     id: 5,
     title: "Git / Git flow",
-    periodOfExperience: "1.5年",
-    text: "git flowでチーム開発をしていました。実際に使用しているサービスは、AWS CodeCommitです。",
+    periodOfExperience: "2.0年",
+    text: "git flowでチーム開発をしていました。\n実際に使用しているサービスは、AWS CodeCommitです。",
     detailText: "",
     imgSrc: "https://via.placeholder.com/500x400.png?text=Card+1"
   },
   {
     id: 6,
     title: "AWS",
-    text: "S3, Codeシリーズ",
-    detailText: "S3, Lambda, ECS, SNS, RDS, CloudWatch, Systems Manager",
+    text: "S3, ECS(Fargate), CodePipeline, CodeBuild",
+    detailText: "CI/CD環境でのECS Fargateコンテナへのアプリケーションのデプロイなどの経験があります。\nまた、AWSコスト把握のためにタグ無しのリソースをaws cliなどで抽出し分析する対応などを行いました。",
     periodOfExperience: "1.5年",
-    imgSrc: "https://via.placeholder.com/500x400.png?text=Card+1"
-  },
-  {
-    id: 7,
-    title: "Python",
-    periodOfExperience: "0.5年",
-    text: "APIサーバー",
-    detailText: "AI-OCRのアプリケーション引き継ぎの際に、徐々に対応していく必要があるため、学習中です。",
-    imgSrc: "https://via.placeholder.com/500x400.png?text=Card+1"
+    // imgSrc: "https://via.placeholder.com/500x400.png?text=Card+1"
+    imgSrc: "https://camo.qiitausercontent.com/20fb3c52a7e918708740d4294584298ddce6d50e/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e61702d6e6f727468656173742d312e616d617a6f6e6177732e636f6d2f302f3836373737352f65366438356663312d376166392d663430392d626561352d6637323939343035303831302e706e67"
   },
 ]

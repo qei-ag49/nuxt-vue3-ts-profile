@@ -5,6 +5,8 @@
     "vuetify",
     "Vuex",
     "MyBatis",
-    "composables"
+    "composables",
+    "Fargate",
+    "laravel"
   ]
 }

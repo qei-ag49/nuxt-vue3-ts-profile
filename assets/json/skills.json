@@ -4,7 +4,6 @@
     "title": "HTML / CSS(SCSS)",
     "text": 12,
     "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
-
   },
   {
     "id": 2,
@@ -33,13 +32,7 @@
   {
     "id": 6,
     "title": "AWS",
-    "text": "S3, Codeシリーズ",
-    "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
-  },
-  {
-    "id": 7,
-    "title": "Python",
-    "text": "APIサーバー",
+    "text": "S3, ECS(Fargate), CodePipeline, CodeBuild",
     "imgSrc": "https://via.placeholder.com/500x400.png?text=Card+1"
   }
 ]

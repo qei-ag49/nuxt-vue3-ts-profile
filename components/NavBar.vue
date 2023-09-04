@@ -19,6 +19,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -30,9 +31,9 @@
             <li class="nav-item">
               <nuxt-link to="/portfolio" class="nav-link">Portfolio</nuxt-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <nuxt-link to="/contact" class="nav-link">Contact</nuxt-link>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
