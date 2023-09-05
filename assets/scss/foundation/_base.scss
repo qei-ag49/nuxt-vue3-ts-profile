@@ -48,9 +48,12 @@ ol, ul {
 // ボタン共通スタイル
 .commonButton {
   // border: 2px solid blue;
-  border: 2px solid #1abc9c;
+  // border: 2px solid #1abc9c;
+  border: 2px solid #17a2b8;
   // background-color: blue;
-  background: linear-gradient(to bottom, #1abc9c, #2ecc71);
+  // background: linear-gradient(to bottom, #1abc9c, #2ecc71);
+  // background: linear-gradient(to bottom, #1abc9c, #17a2b8);
+  background: #17a2b8;
   color: #fff;
   font-weight: bold;
   border-radius: 0.5rem;
@@ -131,7 +134,8 @@ img {
 .card-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: flex-start;
   margin: 0 -10px;
 }
 
@@ -140,6 +144,11 @@ img {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
 
   &__col2 {
     width: calc(50% - 20px);
@@ -200,13 +209,11 @@ img {
   }
 }
 
-
-
-
 .card-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: flex-start;
   margin: 0 -10px;
 }
 
@@ -242,9 +249,18 @@ img {
   padding: 0.1rem 1rem;
   margin-bottom: 0.6rem;
   // background: blue;
-  background: linear-gradient(to bottom, #1abc9c, #2ecc71);
+  // background: linear-gradient(to bottom, #1abc9c, #2ecc71);
+  background: #17a2b8;
   color: #fff;
   border-radius: 10px;
+}
+
+.statementList {
+  justify-content: space-between;
+
+  .statement {
+    width: 48%;
+  }
 }
 
 .box {

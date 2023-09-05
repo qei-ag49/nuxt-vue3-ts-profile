@@ -15,10 +15,20 @@ export type Portfolio = {
   id: number
   title: string
   text: string
+  detailText?: string
   imgSrc: string
   tags: Array<string>
   deployedTo?: string
   githubSrc?: string
+}
+
+/** 経験業務 */
+export type Experience = {
+  title: string
+  text: string
+  periodOfExperience: string,
+  imgSrc?: string
+  tags?: Array<string>
 }
 
 // export type Item = {
