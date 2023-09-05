@@ -14,6 +14,7 @@ export type SkillCard = {
   text: string
   detailText: string
   imgSrc: string
+  percentage: number
 }
 
 /** ポートフォリオのカード表示コンテンツ */

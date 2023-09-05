@@ -92,7 +92,7 @@
 
 <script lang="ts" setup>
 import {
-  defineProps, ref, reactive, computed, watch, watchEffect, defineEmits
+  ref, computed, watch
 } from 'vue'
 import { Item } from '~/types/common'
 import NormalDialog from './NormalDialog.vue';

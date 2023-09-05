@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, computed, defineEmits } from "vue"
+import { computed } from "vue"
 
 const props = defineProps({
   eventType: String,

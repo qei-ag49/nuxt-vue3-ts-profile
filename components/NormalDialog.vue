@@ -17,15 +17,13 @@
 </template>
 
 <script lang="ts" setup>
-import { Item } from "~/types/common"
-import { reactive, computed, defineProps, defineEmits } from "vue"
+import { reactive, computed } from "vue"
 
 const props = defineProps({
   eventType: String,
   isStack: Boolean,
   isStackEdit: Boolean,
   item: Object,
-  // latestIncrementedId: Number,
   latestIncrementedId: String,
 })
 

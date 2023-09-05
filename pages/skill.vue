@@ -9,7 +9,6 @@ import { SkillCard } from "~/types/common"
 const showModal = ref<boolean>(false)
 const cardList = reactive<SkillCard[]>(skills)
 const cardId = ref<number>(0)
-// NOTE Pick<aaa, "" | "">で型指定したい
 const selectedCard = reactive<Pick<SkillCard, "title" | "text" | "detailText" | "imgSrc">>({
   title: "",
   text: "",
@@ -57,35 +56,49 @@ const selectCard = (cardId: number) => {
     <div class="container mt-4">
       <h3>経験業務</h3>
 
-      <div class="heading-sub mt-4">概要：</div>
-      <div class="pl-4 text-indent">業務アプリケーションのSaasサービスの開発・運用対応をしていました。</div>
-
-      <div class="heading-sub mt-4">自身の対応範囲：</div>
-      <div class="pl-4 text-indent">
-        一般開発メンバーとして、チケットの内容に添い、フロント・バックエンドの修正をメインで行いました。<br>ローテーションで、週1回のリリースやコードレビューもしていました。
+      <div class="mt-4">
+        <div class="heading-sub">概要：</div>
+        <div class="pl-4 text-indent">
+          業務アプリケーションのSaasサービスの開発・運用対応をしていました。
+        </div>
       </div>
 
-      <div class="heading-sub mt-4">チーム体制：</div>
-      <div class="pl-4 text-indent">
-        チーム体制はエンジニア約4人で、Backlogを使用したチケット駆動開発で、一部スクラム体制で進めていました。
-        メンバー全員でローテーションで週1回のリリース対応、また都度他社のPRのコードレビューを行っていました。
+      <div class="mt-4">
+        <div class="heading-sub">自身の対応範囲：</div>
+        <div class="pl-4 text-indent">
+          一般開発メンバーとして、チケットの内容に添い、フロント・バックエンドの修正をメインで行いました。<br>ローテーションで、週1回のリリースやコードレビューもしていました。
+        </div>
       </div>
 
-      <div class="heading-sub mt-4">仕様決めから実装の流れ：</div>
-      <div class="pl-4 text-indent">
-        社内の営業・CS（カスタマーサクセス）メンバーから、お客様の要望を確認し要件や優先順位、仕様などを確認し実装に入る流れです。
+      <div class="mt-4">
+        <div class="heading-sub">チーム体制：</div>
+        <div class="pl-4 text-indent">
+          チーム体制はエンジニア約4人で、Backlogを使用したチケット駆動開発で、一部スクラム体制で進めていました。
+          メンバー全員でローテーションで週1回のリリース対応、また都度他社のPRのコードレビューを行っていました。
+        </div>
       </div>
 
-      <div class="heading-sub mt-4">実装・コーディング</div>
-      <div class="pl-4 text-indent">
-        API通信が走る機会は必要最低限か、固定の文字列を使用する場合は定数化する、操作パターンが網羅できているか、などを意識しながら対応しています。
+      <div class="mt-4">
+        <div class="heading-sub">チーム体制：</div>
+        <div class="pl-4 text-indent">
+          社内の営業・CS（カスタマーサクセス）メンバーから、お客様の要望を確認し要件や優先順位、仕様などを確認し実装に入る流れです。
+        </div>
       </div>
 
-      <div class="heading-sub mt-4">レビュー・リリース体制：</div>
-      <div class="pl-4 text-indent">
-        原則週1回のリリースをしていました。
-        AWS Codeシリーズを利用したCI / CDを利用していました。
-        全員のレビューが通過したらチケットのブランチ内容をdevelopブランチにマージ、ステージングブランチにマージ、本番用のブランチにマージという流れでした。
+      <div class="mt-4">
+        <div class="heading-sub">実装・コーディング：</div>
+        <div class="pl-4 text-indent">
+          API通信が走る機会は必要最低限か、固定の文字列を使用する場合は定数化する、操作パターンが網羅できているか、などを意識しながら対応しています。
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <div class="heading-sub">レビュー・リリース体制：</div>
+        <div class="pl-4 text-indent">
+          原則週1回のリリースをしていました。
+          AWS Codeシリーズを利用したCI / CDを利用していました。
+          全員のレビューが通過したらチケットのブランチ内容をdevelopブランチにマージ、ステージングブランチにマージ、本番用のブランチにマージという流れでした。
+        </div>
       </div>
     </div>
 
@@ -103,8 +116,16 @@ const selectCard = (cardId: number) => {
           </div>
           <div class="card-content">
             <h3> {{ card.title }} </h3>
+
+            <div class="percentage-bar">
+              <div 
+                class="fill"
+                :class='`fill__${card.percentage}`'
+              ></div>
+              <p> {{ card.percentage }}% </p>
+            </div>
+
             <p>経験年数：{{ card.periodOfExperience }}</p>
-            <p>{{ card.text }}</p>
             <div class="buttonWrapper">
               <button 
               class="btn commonButton" 
@@ -117,6 +138,7 @@ const selectCard = (cardId: number) => {
 
           <teleport to="body">
 
+            <!-- ここを子コンポーネント化したい -->
             <div class="modal-wrapper" v-if="showModal">
               <div class="modal-overlay" @click="closeModal"></div>
               <div class="modal-content">
