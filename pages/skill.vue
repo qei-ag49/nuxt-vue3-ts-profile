@@ -136,25 +136,7 @@ const selectCard = (cardId: number) => {
             </div>
           </div>
 
-          <teleport to="body">
-
-            <!-- ここを子コンポーネント化したい -->
-            <div class="modal-wrapper" v-if="showModal">
-              <div class="modal-overlay" @click="closeModal"></div>
-              <div class="modal-content">
-                <h3>{{ selectedCard.title }}</h3>
-                <p>{{ selectedCard.text }}</p>
-                <p>{{ selectedCard.detailText }}</p>
-                <div style="max-width: 200px; margin: 0 auto;">
-                  <img :src="selectedCard.imgSrc" alt="">
-                </div>
-                <div class="buttonWrapper mt-4">
-                  <button class="commonButton"  @click="closeModal">閉じる</button>
-                </div>
-              </div>
-            </div>
-
-          </teleport>
+          <MoleculesModalSkillModal :show-modal="showModal" :card="selectedCard" @close="closeModal" />
         </li>
       </ul>
     </div>

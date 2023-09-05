@@ -9,9 +9,10 @@ import { Portfolio } from "~/types/common"
 const showModal = ref<boolean>(false)
 const cardList = reactive<Portfolio[]>(portfolios)
 const cardId = ref<number>(0)
-const selectedCard = reactive({
+const selectedCard = reactive<Pick<Portfolio, "title" | "text" | "imgSrc">>({
   title: "",
   text: "",
+  imgSrc: "",
 })
 
 //
@@ -36,7 +37,6 @@ const closeModal = () => {
 const selectCard = (id: number) => {
   for (const card of cardList) {
     if (id === card.id) {
-      // NOTE 引数のidを参照していないからNGかも
       Object.assign(selectedCard, card)
 
       // 1つfindできればその場で処理を終了
@@ -86,23 +86,21 @@ const selectCard = (id: number) => {
             </div>
           </div>
 
-          <teleport to="body">
-
+          <!-- <teleport to="body">
             <div class="modal-wrapper" v-if="showModal">
               <div class="modal-overlay" @click="closeModal"></div>
               <div class="modal-content">
                 <h3>{{ selectedCard.title }}</h3>
                 <p class="cardText">{{ selectedCard.text }}</p>
-                <!-- <div v-for="(tag, index) in selectedCard.tags" :key="index">
-                  {{ tag }}
-                </div> -->
                 <div class="buttonWrapper">
                   <button class="commonButton" @click="closeModal">Close</button>
                 </div>
               </div>
             </div>
+          </teleport> -->
 
-          </teleport>
+          <MoleculesModalSkillModal :show-modal="showModal" :card="selectedCard" @close="closeModal" />
+
         </li>
       </ul>
     </div>

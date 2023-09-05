@@ -1,16 +1,9 @@
 
-export type Item = {
-  id: number
-  name: string
-  age: number
-  imgSrc?: string
-}
-
 /** スキルのカード表示コンテンツ */
 export type SkillCard = {
   id: number
   title: string
-  periodOfExperience: string
+  periodOfExperience?: string
   text: string
   detailText: string
   imgSrc: string
@@ -28,21 +21,26 @@ export type Portfolio = {
   githubSrc?: string
 }
 
-/** Book */
-export type Book = {
-  title: string
-  author: string | string[]
-}
+// export type Item = {
+//   id: number
+//   name: string
+//   age: number
+//   imgSrc?: string
+// }
 
-/** 商品 */
-export type Merchandise = {
-  name: string
-  price: number
-  amount: number
-}
+// export type Book = {
+//   title: string
+//   author: string | string[]
+// }
 
-export type UseCounter = {
-  increment: () => void
-  decrement: () => void
-  totalPrice: ComputedRef<number>
-}
+// export type Merchandise = {
+//   name: string
+//   price: number
+//   amount: number
+// }
+
+// export type UseCounter = {
+//   increment: () => void
+//   decrement: () => void
+//   totalPrice: ComputedRef<number>
+// }
