@@ -18,23 +18,24 @@ const parentMethod = (e: any) => {
     /> -->
 
     <div class="container mt-4">
-      <h3>挨拶</h3>
-      <div class="">
-        <p>ご訪問いただきありがとうございます！</p>
-      </div>
-    </div>
-
-    <div class="container mt-4">
       <div class="flex box">
         <div class="box__left">
-          <h3>自己紹介</h3>
-          <p>
-            自社Saas開発企業の開発・運用エンジニアとして従事しています。
-            <br />
-            2019年12月〜未経験からWEB制作会社に入社し約1.5年勤務
-            <br />
-            2021年10月〜現在、WEBエンジニアとして働いています。
-          </p>
+          <div>
+            <h3>あいさつ</h3>
+            <p>ご訪問いただきありがとうございます！</p>
+          </div>
+          
+          <div class="mt-4">
+            <h3>自己紹介</h3>
+            <p>
+              自社Saas開発企業の開発・運用エンジニアとして従事しています。
+              <br />
+              2019年12月〜未経験からWEB制作会社に入社し約1.5年勤務
+              <br />
+              2021年10月〜現在、WEBエンジニアとして働いています。
+            </p>
+          </div>
+          
         </div>
         <div class="box__right">
           <div class="imageWrapper">

@@ -10,7 +10,8 @@
 
 <style lang="scss" scoped>
 .footer {
-  background: linear-gradient(to bottom, #1abc9c, #2ecc71);
+  // background: linear-gradient(to bottom, #1abc9c, #2ecc71);
+  background: #17a2b8;
   color: #fff;
   min-width: 100%;
   min-height: 20px;

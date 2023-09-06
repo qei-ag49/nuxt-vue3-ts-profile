@@ -17,11 +17,11 @@
 
 <script>
 export default {
-  name: "Modal",
+  name: "Modal2",
   props: {
     title: {
       type: String,
-      default: "Modal",
+      default: "Modal2",
     },
   },
 }
